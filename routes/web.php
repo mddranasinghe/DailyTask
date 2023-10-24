@@ -17,5 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('task', function () {
-    return view('task');
+
+    $TaskData=App\Models\Task::all();
+    return view('task')->with('task',$TaskData);
+   
 });
+Route::post('/submitTask',[App\Http\Controllers\TaskController::class,'submitTask']);
+Route::get('/completedTask/{id}',[App\Http\Controllers\TaskController::class,'completedTask']);
+Route::get('/NotCompletedTask/{id}',[App\Http\Controllers\TaskController::class,'NotCompletedTask']);
+Route::get('/DeleteTask/{id}',[App\Http\Controllers\TaskController::class,'DeleteTask']);
