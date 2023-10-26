@@ -10,8 +10,7 @@ class TaskController extends Controller
 {
     public function submitTask(Request $request)
     {
-     $this->validate($request,[
-        'task'=>'required|max:100|min:5',]);
+     $this->validate($request,['task'=>'required|max:100|min:5',]);
 
         //dd($request->all());
          $task=new Task; // cretate object
@@ -22,9 +21,9 @@ class TaskController extends Controller
 
         $TaskData=Task::all();
 
-return view('task')->with('task',$TaskData);
+        // return view('task')->with('task',$TaskData);
 
-        // return redirect()->back();
+         return redirect()->back();
 //task table ->task coloms =form pass data
 
        
@@ -38,6 +37,7 @@ return view('task')->with('task',$TaskData);
         $task->save();
 
         return redirect()->back();
+        return view('task');
 
     }
 
