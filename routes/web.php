@@ -26,3 +26,9 @@ Route::post('/submitTask',[App\Http\Controllers\TaskController::class,'submitTas
 Route::get('/completedTask/{id}',[App\Http\Controllers\TaskController::class,'completedTask']);
 Route::get('/NotCompletedTask/{id}',[App\Http\Controllers\TaskController::class,'NotCompletedTask']);
 Route::get('/DeleteTask/{id}',[App\Http\Controllers\TaskController::class,'DeleteTask']);
+
+
+
+Route::get('/updateTask/{id}',[App\Http\Controllers\TaskController::class,'updateTask']);
+
+Route::post('/upadteSave',[App\Http\Controllers\TaskController::class,'upadteSave']);

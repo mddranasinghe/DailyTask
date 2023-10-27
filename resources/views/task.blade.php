@@ -21,6 +21,8 @@
 @endforeach
         <form method="POST" action="/submitTask">
             {{csrf_field()}}
+            <!--{{csrf_field()}} is a security measure in web forms to prevent bad guys from tricking your website into doing things on behalf of a user without their permission. It helps keep things safe and secure.
+-->
         <input type="text" name="task" placeholder="Enter Your Task................"style="width:50%"><br><br>
         <input type="reset" class="btn btn-danger">
         <input type="submit" class="btn btn-success"></form>
@@ -32,7 +34,7 @@
       <th scope="col">ID</th>
       <th scope="col">Task</th>
       <th scope="col">status</th>
-      <th scope="col">Action</th>
+      <th scope="col" colspan="3">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -50,15 +52,18 @@
      @endif
 
 </td>
-<td>   
+<td >   
 @if($task->iscompleted)  
 <a href="/NotCompletedTask/{{$task->id}}" class="btn btn-danger">Mark as Not Completed</button>
 
 
 @else
-<a href="/completedTask/{{$task->id}}" class="btn btn-primary">Mark as Completed</button>&nbsp&nbsp&nbsp&nbsp&nbsp
+<a href="/completedTask/{{$task->id}}" class="btn btn-primary">Mark as Completed</button>
 
 @endif
+</td><td>
+<a href="/updateTask/{{$task->id}}" class="btn btn-primary">Update Task</button>
+
 </td><td>
 <a href="/DeleteTask/{{$task->id}}" class="btn btn-outline-danger">X</button>
 
